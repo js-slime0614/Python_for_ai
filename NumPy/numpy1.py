@@ -23,3 +23,4 @@ print(arr.size)
 
 #reshape
 #말그대로 재구성 차원도 바꿔줄수잇음
+#size는 유지하되 구성을 바꿔줄수있다.
