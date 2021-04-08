@@ -47,3 +47,26 @@ test_ds = tf.data.Dataset.from_tensor_slices((x_test, y_test)).batch(32)
 
 #Create Model
 model = MyModel()
+
+
+#Define loss and optimizer
+loss_object = tf.keras.losses.SparseCategoricalCrossentropy()
+optimizer = tf.keras.optimizers.Adam()
+
+#Define performance metrics
+train_loss = tf.keras.metrics.Mean(name='train_loss')
+train_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='train_accuracy')
+
+test_loss = tf.keras.metrics.Mean(name='test_loss')
+test_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='test_accuracy')
+
+#Do training loop and test
+for epoch in range(EPOCHS):
+    for images, labels in train_ds:
+        train_step(model, images, labels, loss_object, optimizer, train_loss, train_accuracy)
+
+    for test_images, test_labels in test_ds:
+        test_step(model, test_images, test_labels, loss_object, test_loss, test_accuracy)
+    
+    template = 'Epoch {}, Loss: {}, Accuracy: {}, Test Loss: {}, Test Accuracy: {}'
+    print(template.format(epoch + 1, train_loss.result(), train_accuracy))
