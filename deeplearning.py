@@ -69,4 +69,4 @@ for epoch in range(EPOCHS):
         test_step(model, test_images, test_labels, loss_object, test_loss, test_accuracy)
     
     template = 'Epoch {}, Loss: {}, Accuracy: {}, Test Loss: {}, Test Accuracy: {}'
-    print(template.format(epoch + 1, train_loss.result(), train_accuracy.result() * 100, test_loss.result(), test_loss.result() * 100))
+    print(template.format(epoch + 1, train_loss.result(), train_accuracy.result() * 100, test_loss.result(), test_accuracy.result() * 100))
