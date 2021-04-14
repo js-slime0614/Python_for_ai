@@ -37,4 +37,8 @@ model.b_o = weights['b_o']
 outputs = list()
 for pt, label in zip(inputs, labels):
     output = model(pt)
-    #11분 40초
+    outputs.append(np.argmax(output))
+    #추정 레이블 , 정답 레이블 출력
+    print(np.argmax(output), label)
+    #14분 44초
+outputs = np.stack(outputs, axis=0)
