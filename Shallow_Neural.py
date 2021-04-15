@@ -40,10 +40,10 @@ for pt, label in zip(inputs, labels):
     outputs.append(np.argmax(output))
     #추정 레이블 , 정답 레이블 출력
     print(np.argmax(output), label)
-    #14분 44초
 outputs = np.stack(outputs, axis=0)
 
 plt.figure()
 for idx in range(10):
     mask = labels == idx
     plt.scatter(inputs[mask, 0], inputs[mask, 1])
+    #17분 13초
