@@ -46,4 +46,5 @@ plt.figure()
 for idx in range(10):
     mask = labels == idx
     plt.scatter(inputs[mask, 0], inputs[mask, 1])
-    #17분 13초
+plt.title('true_label')
+plt.show()
