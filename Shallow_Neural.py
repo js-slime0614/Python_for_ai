@@ -48,4 +48,3 @@ for idx in range(10):
     plt.scatter(inputs[mask, 0], inputs[mask, 1])
 plt.title('true_label')
 plt.show()
-#is it showable
