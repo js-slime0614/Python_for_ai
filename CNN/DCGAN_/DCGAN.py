@@ -33,6 +33,36 @@ class Generator(nn.Module):
 
         return x
 
+#DCGAN 판별자 만들기
+class Discriminator(nn.Module):
+    def __init__(self, in_channels, out_channels, norm='bnorm'):
+        super(Discriminator, self).__init__()
+
+        #Encoder
+        self.enc1 = CBR2d(in_channels, 1 * 64, kernel_size=4, stride=2, padding=1, norm=norm, relu=0.2, bias=False)
+
+        self.enc2 = CBR2d(1 * 64, 2 * 64, kernel_size=4, stride=2, padding=1, norm=norm, relu=0.2, bias=False)
+
+        self.enc3 = CBR2d(2 * 64, 4 * 64, kernel_size=4, stride=2, padding=1, norm=norm, relu=0.2, bias=False)
+
+        self.enc4 = CBR2d(4 * 64, 8 * 64, kernel_size=4, stride=2, padding=1, norm=norm, relu=0.2, bias=False)
+
+        self.enc5 = CBR2d(8 * 64, out_channels, kernel_size=4, stride=2, padding=1, norm=None, relu=None, bias=False)
+
+        self.sig = nn.Sigmoid()
+
+    def forward(self, x):
+
+        x = self.enc1(x)
+        x = self.enc2(x)
+        x = self.enc3(x)
+        x = self.enc4(x)
+        x = self.enc5(x)
+        
+        x = self.sig(x)    
+
+
+
 class CBR2d(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size=4, stride=1, padding=0, bias=True, norm='bnorm', relu=0.0):
         
