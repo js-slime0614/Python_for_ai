@@ -35,3 +35,11 @@ if not os.path.exists(result_dir_test):
 
 ## 데이터를 불러오기 위한 부분
 # transforms_train = 
+
+## 네트워크 불러오기
+
+## Loss Function(손실함수)를 정의하기
+
+## Optimizer 정의하기
+
+## Train 학습
