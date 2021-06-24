@@ -85,7 +85,6 @@ class CBR2d(nn.Module):
     def forward(self, x):
         return self.cbr(x)
 
-    
 class DECBR2d(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size=4, stride=1, padding=0, bias=True, norm='bnorm', relu=0.0):
         
