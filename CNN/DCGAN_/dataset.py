@@ -19,6 +19,7 @@ class Dataset(torch.utils.data.Dataset):
         lst_data = os.listdir(self.data_dir)
         lst_data = [f for f in lst_data if f.endswitch('jpg') | f.endswith('png') | endswith('jpeg')]
 
+
         lst_data.sort()
 
         self.lst_data = lst_data
